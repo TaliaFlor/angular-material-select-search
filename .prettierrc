@@ -1,0 +1,7 @@
+{
+  "bracketSameLine": true,
+  "arrowParens": "avoid",
+  "singleAttributePerLine": false,
+  "printWidth": 210,
+  "singleQuote": true
+}

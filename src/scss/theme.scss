@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+@use 'mixins.scss' as mixin;
+
+// Include non-theme styles for core.
+@include mat.core();
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.$deep-purple-palette,
+      accent: mat.$amber-palette,
+    ),
+  )
+);
+
+// Include all theme styles for the components.
+@include mat.all-component-themes($theme);
+
+// Call all the mixins
+@include mixin.primary-color($theme, '.has-selection');

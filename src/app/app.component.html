@@ -1,0 +1,102 @@
+<div class="page-container">
+  <div class="container">
+    <div>
+      <h1>Single Select</h1>
+      <!-- prettier-ignore -->
+      <app-select-search label="Toppings"
+                      [options]="options"
+                      [(selected)]="singleSelect_Selecteds"
+                      [config]="singleSelect_Config"
+                      (filter)="onSingleSelectFilter()">
+    </app-select-search>
+    </div>
+
+    <div>
+      <h1>Multiple Select</h1>
+      <!-- prettier-ignore -->
+      <app-select-search label="Toppings"
+                      [options]="options"
+                      [(selected)]="multipleSelect_Selecteds"
+                      [config]="multipleSelect_Config"
+                      (filter)="onMultipleSelectFilter()">
+    </app-select-search>
+    </div>
+  </div>
+
+  <hr />
+
+  <h1>Table Filter</h1>
+
+  <div class="grid-container mat-elevation-z8">
+    <table mat-table matSort [dataSource]="dataSource">
+      <!-- Id. Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Id.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          <!-- prettier-ignore -->
+          <app-select-search label="Name"
+                              [config]="baseConfig"
+                              [(selected)]="filtersSelected.names"
+                              [options]="filtersOptions?.names"
+                              (filter)="onFilter()">
+          </app-select-search>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          <!-- prettier-ignore -->
+          <app-select-search label="Phone"
+                              [config]="optionalConfig"
+                              [(selected)]="filtersSelected.phones"
+                              [options]="filtersOptions?.phones"
+                              (filter)="onFilter()">
+          </app-select-search>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          <!-- prettier-ignore -->
+          <app-select-search label="Email"
+                              [config]="optionalConfig"
+                              [(selected)]="filtersSelected.emails"
+                              [options]="filtersOptions?.emails"
+                              (filter)="onFilter()">
+          </app-select-search>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Is Millionarie? Column -->
+      <ng-container matColumnDef="isMillionarie">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          <!-- prettier-ignore -->
+          <app-select-search label="Is Millionarie?"
+                              [config]="composeFilterConfig(optionalConfig, { multiple: false })"
+                              [(selected)]="filtersSelected.isMillionaries"
+                              [options]="filtersOptions?.isMillionaries"
+                              (filter)="onFilter()">
+          </app-select-search>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.isMillionarie }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <tr *matNoDataRow class="mat-row no-data-row">
+        <td [colSpan]="displayedColumns.length" class="mat-cell">No data...</td>
+      </tr>
+    </table>
+  </div>
+</div>

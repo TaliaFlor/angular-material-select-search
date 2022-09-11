@@ -1,0 +1,74 @@
+/* ------------------------------------------------------ */
+
+$hover-background-color: rgba(0, 0, 0, 0.04);
+
+/* ------------------------------------------------------ */
+
+::ng-deep .mat-select-panel {
+  overflow-x: hidden !important;
+}
+
+/* ------------------------------------------------------ */
+
+.additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+/* ------------------------------------------------------ */
+
+.mat-form-field {
+  width: 95%;
+}
+
+/* ------------------------------------------------------ */
+
+::ng-deep .search .mat-form-field-underline {
+  display: none;
+}
+
+.search {
+  font-size: 0.9em;
+  margin-left: 0.75em;
+}
+
+.clear-icon {
+  margin-right: 0.25em;
+
+  :is(&:hover, &:focus) .mat-icon {
+    font-weight: bold;
+  }
+}
+
+/* ------------------------------------------------------ */
+
+.mat-checkbox {
+  width: 100%;
+  padding-inline: 16px;
+  padding-block: 0.7em;
+
+  :is(&:hover, &:focus) {
+    background-color: $hover-background-color;
+  }
+}
+
+.select-all ::ng-deep .mat-checkbox-layout {
+  width: 100%;
+  display: inline-block;
+}
+
+/* ------------------------------------------------------ */
+
+.mat-option {
+  &.mat-option-disabled {
+    display: none;
+  }
+
+  &.mat-active {
+    :is(&:hover, &:focus) {
+      background-color: $hover-background-color;
+    }
+  }
+}
+
+/* ------------------------------------------------------ */

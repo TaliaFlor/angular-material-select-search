@@ -1,0 +1,42 @@
+/* ------------------------------------------------------ */
+
+.page-container {
+  margin: 0.5em;
+  padding-bottom: 5em;
+}
+
+/* ------------------------------------------------------ */
+
+.container {
+  display: flex;
+  gap: 5em;
+}
+
+/* ------------------------------------------------------ */
+
+.grid-container {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-cell,
+.mat-header-cell {
+  text-align: center;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: center;
+}
+
+.no-data-row {
+  height: 4em;
+
+  .mat-cell {
+    font-weight: bold;
+  }
+}
+
+/* ------------------------------------------------------ */

@@ -1,0 +1,38 @@
+<!--   prettier-ignore   -->
+<div (click)="$event.stopPropagation()"> <!--   Necessary for when using inside another component e.g. table header   -->
+  <mat-form-field [appearance]="appearance" [style]="style">
+    <!--   LABEL   -->
+    <mat-label>{{ label }}</mat-label>
+
+    <!--  SELECT  -->
+    <mat-select [disabled]="disable" [multiple]="multiple" [(value)]="selected" (selectionChange)="onSelect()">
+      <!--   OTHERS LABEL   -->
+      <mat-select-trigger>
+        {{ fistPartOfLabel }} <span class="additional-selection">{{ secondPartOfLabel }}</span>
+      </mat-select-trigger>
+
+      <!--   SEARCH   -->
+      <mat-form-field *ngIf="showSearch" floatLabel="never" class="search" (keydown)="$event.stopImmediatePropagation()">
+        <input #search matInput type="search" autocomplete="off" placeholder="Search..." (input)="onSearch($event.target)" />
+        <button mat-icon-button *ngIf="searchValue" matSuffix color="primary" class="clear-icon" title="Clear search" (click)="onClearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <!--  CLEAR (SINGLE) -->
+      <!--  Clear selection in single select mode  -->
+      <mat-option *ngIf="showClearSelect">&#8212;</mat-option>
+
+      <!--  SELECT ALL (MULTIPLE)    -->
+      <!--  Select/deselect all in multiple select mode  -->
+      <mat-checkbox #allCheckbok *ngIf="showAllSelected" class="select-all" color="primary" [ngClass]="allSelectedStyle" [checked]="allSelected" [indeterminate]="someSelected" (change)="onSelectAll()">
+        {{ selectAll }}
+      </mat-checkbox>
+
+      <!--  OPTIONS    -->
+      <mat-option [hidden]="hide(option)" [disabled]="hide(option)" *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
